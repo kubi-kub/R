@@ -1,0 +1,119 @@
+ogolne <- ts(c(599.49, 609.72, 624.99, 677.81, 694.70, 690.30, 744.81, 809.95), start = 2000) 
+
+woj <- ts(c(618.26, 609.89, 620.47, 687.84, 745.61, 699.08, 752.86, 791.16), start = 2000) 
+
+ 
+
+# pkt a) 
+
+ 
+
+#Dla danych ogólnych: 
+
+ogolne / lag(ogolne, -1) * 100 -> indeks 
+
+Indeks 
+
+ 
+
+#Dla danych województwa: 
+
+woj / lag(woj, -1) * 100 -> indeksW 
+
+IndeksW 
+
+ 
+
+# pkt b) 
+
+ 
+
+#Dla danych ogólnych: 
+
+ogolne / ogolne[1] * 100 
+
+ 
+
+#Dla danych województwa: 
+
+woj / woj[1] * 100 
+
+ 
+
+# pkt c) 
+
+ 
+
+#Dla danych ogólnych: 
+
+n <- length(ogolne) 
+
+(ogolne[n] / ogolne[1])^(1 / (n-1)) 
+
+ 
+
+#Dla danych województwa: 
+
+k <- length(woj) 
+
+> (woj[k] / woj[1])^(1 / (k-1)) 
+
+ 
+
+# pkt d) 
+
+x <- woj 
+
+n <- length(x) 
+
+t <- 2: (n-1) 
+
+x_1 <- x[t-1] 
+
+x_2 <- x[t] 
+
+x_3 <- x[t+1] 
+
+ 
+
+#i) 
+
+filter(woj, method = "c", sides =2, filter = rep.int(1/3, 3)) -> srednia 
+
+srednia 
+
+ 
+
+#ii) 
+
+ts(pmin(pmax(x_1, x_2), pmax(x_1, x_3), pmax(x_2, x_3)), start = 2001) -> mediana 
+
+mediana 
+
+#iii) 
+
+pmin(x_1, x_2, x_3) 
+
+ 
+
+#iv) 
+
+pmax(x_1, x_2, x_3) 
+
+ 
+
+ 
+
+# pkt e) 
+
+plot(woj) 
+
+lines(srednia, col = "red") 
+
+ 
+
+# pkt f) 
+
+plot(woj) 
+
+lines(mediana, col = "blue") 

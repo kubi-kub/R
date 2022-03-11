@@ -1,0 +1,157 @@
+#Zad1 
+
+dane <- c(4.45, 4.53, 5.58, 7.89, 5.97, 6.40, 5.39, 4.76, 5.34, 6.92, 6.45, 6.71, 6.65, 6.93, 7.34, 7.86, 7.68, 6.71, 6.51, 6.01, 5.89, 5.83, 6.57, 8.30, 6.59, 6.68, 5.32, 6.19, 6.68) 
+
+ 
+
+dane.ts <- ts(dane,frequency = 12,start = c(2005,12)) 
+
+dane.ts 
+
+      Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec 
+
+2005                                                                                                 4.45 
+
+2006 4.53 5.58 7.89 5.97 6.40 5.39 4.76 5.34 6.92 6.45 6.71 6.65 
+
+2007 6.93 7.34 7.86 7.68 6.71 6.51 6.01 5.89 5.83 6.57 8.30 6.59 
+
+2008 6.68 5.32 6.19 6.68 
+
+ 
+
+lag(dane.ts,-12) 
+
+dane.ts - lag(dane.ts, -12) 
+
+ 
+
+#Dla RokRok 
+
+dane.ts - lag(dane.ts, -12) -> rr 
+
+Rr 
+
+#Dla RokRokProcent 
+
+rr / lag(dane.ts, -12) * 100 -> rr.proc 
+
+rr.proc 
+
+ 
+
+#Dla MiesMies 
+
+dane.ts - lag(dane.ts, -1) -> mm 
+
+mm 
+
+ 
+
+#Dla MiesMiesProcent 
+
+mm / lag(dane.ts, 1) * 100 -> mm.proc 
+
+mm.proc 
+
+ 
+
+#Zad2 
+
+dane.ts + lag(dane.ts,1) 
+
+(dane.ts + lag(dane.ts, 1)) / 2 
+
+mean((dane.ts + lag(dane.ts, 1)) / 2) 
+
+ 
+
+#Zad3 
+
+plot(dane.ts) 
+
+ 
+
+#Zad4 
+
+plot(mm.proc) 
+
+#Zad.5 
+
+#a) 
+
+min(dane.ts) 
+
+which.min(dane.ts) 
+
+max(dane.ts) 
+
+which.max(dane.ts) 
+
+ 
+
+#b) 
+
+znajdz_min <- function(x) { 
+
+idx <- which.min(x) 
+
+print(idx) 
+
+# rok minimalnej wartosci 
+
+rok <- floor(time(x) [idx]) 
+
+print(rok) 
+
+#miesiac minimalnej wartosci 
+
+miesiac <- month.name[cycle(x)] 
+
+print(miesiac) 
+
+# wartosc minimalna 
+
+wartosc <- min(x) 
+
+c(miesiac, rok, wartosc) 
+
+ 
+
+znajdz_max <- function(x) { 
+
+idx <- which.max(x) 
+
+print(idx) 
+
+# rok maksymalnej wartosci 
+
+rok <- floor(time(x) [idx]) 
+
+print(rok) 
+
+#miesiac maksymalnej wartosci 
+
+miesiac <- month.name[cycle(x)] 
+
+print(miesiac) 
+
+# wartosc maksymalna 
+
+wartosc <- max(x) 
+
+c(miesiac, rok, wartosc) 
+
+ 
+
+znajdz_max(rr) 
+
+znajdz_min(rr) 
+
+ 
+
+#c) 
+
+znajdz_max(mm) 
+
+znajdz_min(mm) 

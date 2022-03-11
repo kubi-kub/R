@@ -1,0 +1,65 @@
+Pkt a) 
+
+dochody <- c(6.83, 4.38, 3.8, 3.76, 2.42, 6.45) 
+
+mean(dochody) -> m 
+
+print(m) 
+
+ 
+
+ 
+
+Pkt b) 
+
+plot(dochody, xlab = "Firma", ylab = "Wartosc dochodu", xlim = c(1,8), ylim = c(1,8), xaxp = c(1,8,7), yaxp = c(1,8,7), frame.plot = F, pch = 19) 
+
+abline(m, 0, col = "green") 
+
+ 
+
+Pkt c) 
+
+dochody <- c(6.83, 4.38, 3.8, 3.76, 2.42, 6.45) 
+
+sd(dochody) -> s 
+
+print(s) 
+
+ 
+
+Pkt d) 
+
+m + (-2:2) * s 
+
+ 
+
+Pkt e) 
+
+(1) Liczbowo:  
+
+sum(m-s < dochody & dochody < m + s) 
+
+Procentowo: 
+
+sum(m-s < dochody & dochody < m + s) / length(dochody) * 100 
+
+ 
+
+(2) Liczbowo: 
+
+sum(m- 2s < dochody & dochody < m + 2s) 
+
+Procentowo: 
+
+sum(m- 2s < dochody & dochody < m + 2s) / length(dochody) * 100 
+
+ 
+
+Pkt f) 
+
+dochody <- c(6.83, 4.38, 3.8, 3.76, 2.42, 6.45) 
+
+V <- s / m * 100 
+
+print(V) 
